@@ -1,0 +1,124 @@
+body {
+  font-family: 'Merriweather', serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  font-family: 'Sacramento', cursive;
+  font-size: 3.75rem;
+  margin-top: 8.125rem;
+ 
+}
+h2 {
+  font-size: 1.875rem;
+}
+h3 {
+  color:#11999E;
+  font-weight: bold;
+}
+p {
+  color:#40514E;
+
+}
+a {
+  text-decoration: none;
+  padding: 0.5rem 1rem; 
+  font-weight: bold;
+}
+hr {
+  border: none;
+  border-top: 0.625rem dotted #EAF6F6;
+  width: 8%;
+  margin: 5rem auto;
+}
+h1,h2 {
+  color: #66BFBF;
+}
+h2, h3,a  {
+  font-family: "Montserrat", sans-serif;
+}
+
+.top-container {
+  margin-bottom: 3.75rem;
+  background-color: #EAF6F6;
+}
+.programmer,
+.my-skills {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+.pro {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+.clouds-container {
+
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid transparent;
+}
+.top-cloud {
+  position: absolute;
+  right: 0;  
+  top: 30px;
+}
+.bottom-cloud {
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+}
+.mountain {
+  max-width: 480px;
+}
+.circle {
+  border-radius: 50%;
+  height: 150px;
+  
+}
+.description-profile{
+  padding: 0 35%;
+  
+}
+.skills {
+  max-width: 600px;
+  margin: 6.25rem auto;
+  text-align: left;
+}
+.computer {
+  float: left;
+  margin-right: 20px;
+}
+.chillies {
+  float: right;
+  margin-left: 1.25rem;
+}
+.contact-me {
+  max-width: 600px;
+  margin: 6.25rem auto;
+}
+.button-contact {
+  background-color: #66BFBF;
+  text-decoration: none;
+  border-radius: 8px;
+  color: white;
+  display: inline-block;
+  margin-top: 1.875rem;
+  
+}
+.bottom-container {
+  background-color: #66BFBF;
+  padding: 1.875rem;
+  
+}
+.footer-link {
+  color: #11999E;
+  margin-right: 1.25rem;
+}
+.copyright {
+  color: #EAF6F6;
+  margin-top: 1.875rem;
+  font-size: 0.75rem;
+}
