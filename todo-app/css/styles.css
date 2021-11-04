@@ -5,7 +5,7 @@
   --text-color-checked: hsl(234, 39%, 85%);
   --main-bg-color: hsl(235, 24%, 19%);
   --border-color:hsl(237, 14%, 26%);
-  --main-bg-color-hover:hsl(233, 14%, 35%);
+  
 }
 [data-theme="light"]:root {
   --body-bg-color: hsl(236, 33%, 92%);
@@ -14,8 +14,7 @@
   --text-color-checked: hsl(236, 9%, 61%);
   --main-bg-color: hsl(0, 0%, 98%);
   --border-color:hsl(233, 11%, 84%);
-  --main-bg-color-hover:hsl(236, 33%, 92%);
-  
+
 }
 
 * {
@@ -24,7 +23,9 @@
   box-sizing: border-box;
 }
 body {
+ 
   font-family: 'Josefin Sans', sans-serif;
+
 
   font-size: 1.125rem;
 
@@ -98,30 +99,42 @@ li {
 .input-task input[type="text"]:focus {
   outline: none;
 }
-.list-tasks {
+
+.list-tasks, .number-tasks {
   background-color: var(--main-bg-color);
   color: var(--text-color-default);
-
+}
+.list-tasks{
   margin-top: 2rem;
 
-  border-radius: 8px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
-.list-tasks li, .list-tasks div{
+.list-tasks li {
+  display: flex;
+  
+}
+.number-tasks {
+  display: none;
+  border: none;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.list-tasks li, .number-tasks{
   padding: 1rem;
   border-bottom: 1px solid var(--border-color);
 
-  display: flex;
   justify-content: space-between;
   align-items: center;
   
   transition: all .3s;
 }
-.list-tasks div {
-  border: none;
+.show-number-tasks {
+  display: flex;
 }
 
 .list-tasks li:hover {
-  background-color:var(--main-bg-color-hover);
+  opacity: 0.7;
 }
 .list-tasks li:hover > .btn-delete{
   display: block;
@@ -129,6 +142,7 @@ li {
 .list-tasks .task-name {
   font-size: 1.125rem;
   align-self:flex-end;
+  
 }
 .task-container {
   position: relative;
@@ -181,7 +195,7 @@ li {
 }
 
 .footer {
-  margin-top: 4rem;
+  margin-top: 6rem;
   text-align: center;
   color: var(--text-color-default);
 }
@@ -202,10 +216,13 @@ li {
 @media(max-width: 600px) {
   .container {
     margin-top: 20px;
-    padding: 1.5rem;
+    padding: 1rem;
   }
   .header h1 {
     font-size: 2rem;
+  }
+  .input-task input[type="text"], .task-container .task-name{
+    font-size: .8rem;
   }
   .list-tasks {
     margin-top: 1rem;
