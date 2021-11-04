@@ -1,9 +1,20 @@
-:root {
+[data-theme="dark"]:root {
   --body-bg-color: hsl(235, 21%, 11%);
-  --text-color: hsl(236, 33%, 92%);
+  --text-color-title: hsl(0, 0%, 98%);
+  --text-color-default: hsl(236, 33%, 92%);
+  --text-color-checked: hsl(234, 39%, 85%);
   --main-bg-color: hsl(235, 24%, 19%);
   --border-color:hsl(237, 14%, 26%);
   --main-bg-color-hover:hsl(233, 14%, 35%);
+}
+[data-theme="light"]:root {
+  --body-bg-color: hsl(236, 33%, 92%);
+  --text-color-title: hsl(0, 0%, 98%);
+  --text-color-default: hsl(235, 19%, 35%);
+  --text-color-checked: hsl(236, 9%, 61%);
+  --main-bg-color: hsl(0, 0%, 98%);
+  --border-color:hsl(233, 11%, 84%);
+  --main-bg-color-hover:hsl(236, 33%, 92%);
   
 }
 
@@ -41,7 +52,7 @@ li {
   font-size: 3rem;
   text-transform: uppercase;
   letter-spacing: 1rem;
-  color: var(--text-color);
+  color: var(--text-color-title);
 }
 .btn-theme {
   background: transparent;
@@ -79,7 +90,7 @@ li {
 }
 .input-task input[type="text"]{
   background-color: var(--main-bg-color);
-  color: var(--text-color);
+  color: var(--text-color-default);
   font-size: 1.125rem;
   border: none;
   width: 100%;
@@ -89,7 +100,7 @@ li {
 }
 .list-tasks {
   background-color: var(--main-bg-color);
-  color: var(--text-color);
+  color: var(--text-color-default);
 
   margin-top: 2rem;
 
@@ -110,14 +121,14 @@ li {
 }
 
 .list-tasks li:hover {
-  background-color:hsl(234, 11%, 52%);
+  background-color:var(--main-bg-color-hover);
 }
 .list-tasks li:hover > .btn-delete{
   display: block;
 }
-.list-tasks li label {
+.list-tasks .task-name {
   font-size: 1.125rem;
- 
+  align-self:flex-end;
 }
 .task-container {
   position: relative;
@@ -127,8 +138,6 @@ li {
   display:flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row-reverse;
-  
   gap: 0.5rem;
   
 }
@@ -151,6 +160,11 @@ li {
 .task-container input:checked ~ .checkmark .icon-check {
   display:block
 }
+.task-container input:checked ~ .task-name {
+  text-decoration: line-through;
+  color: var(--text-color-checked);
+}
+
 .task-container input {
   position: absolute;
   opacity: 0;
@@ -169,7 +183,7 @@ li {
 .footer {
   margin-top: 4rem;
   text-align: center;
-  color: var(--text-color);
+  color: var(--text-color-default);
 }
 .footer a {
   color: hsl(220, 98%, 61%);
