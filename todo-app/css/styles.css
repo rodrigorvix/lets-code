@@ -34,6 +34,8 @@ body {
   background-position: top center;
   
   background-color: var(--body-bg-color);
+
+  transition: all .5s;
 }
 li {
   list-style: none;
@@ -93,7 +95,7 @@ li {
 .input-task input[type="text"]{
   background-color: var(--main-bg-color);
   color: var(--text-color-default);
-  font-size: 1.125rem;
+  font-size: 1rem;
   border: none;
   width: 100%;
 }
@@ -141,7 +143,7 @@ li {
   display: block;
 }
 .list-tasks .task-name {
-  font-size: 1.125rem;
+  font-size: 1rem;
   align-self:flex-end;
   
 }
@@ -153,7 +155,7 @@ li {
   display:flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  
   
 }
 .checkmark{
@@ -161,7 +163,7 @@ li {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 8px;
   border: 2px solid var(--border-color);
   padding:.25rem;
   color: white;
@@ -189,7 +191,7 @@ li {
 }
 .btn-delete {
   background: transparent;
-  font-size:1.125rem;
+  font-size:1rem;
   border:none;
   cursor: pointer;
   display: none;
@@ -223,11 +225,19 @@ li {
     font-size: 2rem;
   }
   .input-task input[type="text"], .task-container .task-name{
-    font-size: .8rem;
+    font-size: .75rem;
   }
   .list-tasks {
     margin-top: 1rem;
+    width: 100%;
+  
   }
+  
+  .task-name {
+   width:100%;
+   overflow: hidden;
+  }
+
   .footer {
     font-size: .75rem;
   }

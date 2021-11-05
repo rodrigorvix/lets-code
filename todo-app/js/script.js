@@ -1,7 +1,6 @@
-// Armazenar as tarefas no Local Storage
-
-// se tiver listTasks add evento de click btn-delete
-//contador ler o localstorage
+// overflow no nome das tasks ;
+// salveStorage quando check ou noCheck
+//organizar o código
 
 const html = document.querySelector("html");
 const buttonTheme = document.querySelector(".btn-theme");
@@ -12,7 +11,14 @@ const numberTasks = document.querySelector(".number-tasks");
 let countTasks = 0;
 
 html.dataset.theme = localStorage.theme ? localStorage.theme : "dark";
-listTasks.innerHTML = localStorage.listTasks ? localStorage.listTasks : " ";
+
+if(localStorage.listTasks) {
+  listTasks.innerHTML = localStorage.listTasks;
+  addEventButtonDelete();
+
+  countTasks = listTasks.childElementCount;
+  showCountTasks(countTasks);
+}
 
 buttonTheme.addEventListener("click", changeTheme);
 inputTask.addEventListener("keypress", addNewTask);
@@ -32,8 +38,6 @@ function addNewTask({ key }) {
     const listTasks = document.querySelector(".list-tasks");
     const newTask = document.createElement("li");
 
-    numberTasks.classList.add("show-number-tasks");
-
     newTask.innerHTML = `
     <label class="task-container">
       <input type="checkbox">
@@ -49,8 +53,8 @@ function addNewTask({ key }) {
     listTasks.appendChild(newTask);
 
     countTasks++;
-
-    numberTasks.innerHTML = `${countTasks} tarefa(s) adicionada(s).`;
+    showCountTasks(countTasks);
+   
     inputTask.value = "";
 
     addEventButtonDelete();
@@ -72,6 +76,10 @@ function removeTask() {
     numberTasks.classList.remove("show-number-tasks");
   }
 }
+function showCountTasks(countTasks) {
+  numberTasks.classList.add("show-number-tasks");
+  numberTasks.innerHTML = `${countTasks} tarefa(s) adicionada(s).`;
+}
 
 function addEventButtonDelete() {
   const buttonRemoveTask = document.querySelectorAll(".btn-delete");
@@ -82,6 +90,5 @@ function addEventButtonDelete() {
 function saveTasksStorage() {
   const listTasksStorage = listTasks.innerHTML;
   
-  localStorage.setItem('listTasks', listTasksStorage);
-  
+  localStorage.setItem('listTasks', listTasksStorage); 
 }
