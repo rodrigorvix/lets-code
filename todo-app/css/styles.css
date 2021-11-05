@@ -26,7 +26,6 @@ body {
  
   font-family: 'Josefin Sans', sans-serif;
 
-
   font-size: 1.125rem;
 
   background-image: url("../images/bg-desktop-dark.jpg");
@@ -43,6 +42,8 @@ li {
 .container {
   margin: 78px auto 20px;
   max-width: 540px;
+
+  height: 80vh;
  
 }
 .header {

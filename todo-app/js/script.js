@@ -1,63 +1,87 @@
-// Alterar tema clicando no icon theme; ok 
-
-//Adicionar tarefa ao apertar a tecla Enter - ok
-
-// Contabilizar o numero de tarefas - ok
-
-//Remover tarefa ao clicar no icon-delete
-
 // Armazenar as tarefas no Local Storage
 
-const html = document.querySelector('html');
-const buttonTheme = document.querySelector('.btn-theme');
-const inputTask = document.querySelector('#input-new-task')
+// se tiver listTasks add evento de click btn-delete
+//contador ler o localstorage
 
-let countTasks = 0
+const html = document.querySelector("html");
+const buttonTheme = document.querySelector(".btn-theme");
+const inputTask = document.querySelector("#input-new-task");
+const listTasks = document.querySelector(".list-tasks");
+const numberTasks = document.querySelector(".number-tasks");
 
-html.dataset.theme = localStorage.theme ? localStorage.theme : 'dark'
+let countTasks = 0;
 
-buttonTheme.addEventListener('click', changeTheme)
+html.dataset.theme = localStorage.theme ? localStorage.theme : "dark";
+listTasks.innerHTML = localStorage.listTasks ? localStorage.listTasks : " ";
 
-inputTask.addEventListener('keypress', addNewTask)
+buttonTheme.addEventListener("click", changeTheme);
+inputTask.addEventListener("keypress", addNewTask);
 
 function changeTheme() {
+  const iconDark = document.querySelector(".theme-dark");
+  const iconLight = document.querySelector(".theme-light");
 
-  const iconDark = document.querySelector('.theme-dark');
-  const iconLight = document.querySelector('.theme-light');
-
-  iconDark.classList.toggle('show-icon');
-  iconLight.classList.toggle('show-icon');
-  html.dataset.theme = html.dataset.theme !== 'dark' ? 'dark' : 'light';
-  
+  iconDark.classList.toggle("show-icon");
+  iconLight.classList.toggle("show-icon");
+  html.dataset.theme = html.dataset.theme !== "dark" ? "dark" : "light";
+  localStorage.setItem('theme', html.dataset.theme)
 }
 
-function addNewTask(event) {
- if(event.key === "Enter" && inputTask.value.trim() !== '') {
+function addNewTask({ key }) {
+  if (key === "Enter" && inputTask.value.trim() !== "") {
+    const listTasks = document.querySelector(".list-tasks");
+    const newTask = document.createElement("li");
 
-  const listTasks = document.querySelector('.list-tasks');
-  const newTask = document.createElement('li');
+    numberTasks.classList.add("show-number-tasks");
 
-  const numberTasks = document.querySelector('.number-tasks');
-  numberTasks.classList.add('show-number-tasks')
-
-  newTask.innerHTML = `
+    newTask.innerHTML = `
     <label class="task-container">
       <input type="checkbox">
       <span class="checkmark">
         <img src="./images/icon-check.svg" alt="icon check" class="icon-check">
       </span>
-      <span class="task-name">${inputTask.value.substring(0,50)}</span>
+      <span class="task-name">${inputTask.value.substring(0, 50)}</span>
     </label>
     <button class="btn-delete">
       <img src="./images/icon-cross.svg" alt="icon cross">
-    </button>`
-  listTasks.appendChild(newTask);
-  
-  countTasks++
+    </button>`;
 
-  numberTasks.innerHTML = `${countTasks} tarefa(s) adicionada(s).`
+    listTasks.appendChild(newTask);
+
+    countTasks++;
+
+    numberTasks.innerHTML = `${countTasks} tarefa(s) adicionada(s).`;
+    inputTask.value = "";
+
+    addEventButtonDelete();
+
+    saveTasksStorage();
+  }
+}
+
+function removeTask() {
+  const taskRemove = this.parentNode;
+  listTasks.removeChild(taskRemove);
+  countTasks--;
+
+  saveTasksStorage();
+
+  if (countTasks > 0) {
+    numberTasks.innerHTML = `${countTasks} tarefa(s) adicionada(s).`;
+  } else {
+    numberTasks.classList.remove("show-number-tasks");
+  }
+}
+
+function addEventButtonDelete() {
+  const buttonRemoveTask = document.querySelectorAll(".btn-delete");
+  buttonRemoveTask.forEach((button) =>
+    button.addEventListener("click", removeTask)
+  );
+}
+function saveTasksStorage() {
+  const listTasksStorage = listTasks.innerHTML;
   
+  localStorage.setItem('listTasks', listTasksStorage);
   
-  inputTask.value = ""
- }
 }
