@@ -1,7 +1,3 @@
-// overflow no nome das tasks ;
-// salveStorage quando check ou noCheck
-//organizar o código
-
 const html = document.querySelector("html");
 const buttonTheme = document.querySelector(".btn-theme");
 const inputTask = document.querySelector("#input-new-task");
@@ -10,18 +6,10 @@ const numberTasks = document.querySelector(".number-tasks");
 
 let countTasks = 0;
 
-html.dataset.theme = localStorage.theme ? localStorage.theme : "dark";
-
-if(localStorage.listTasks) {
-  listTasks.innerHTML = localStorage.listTasks;
-  addEventButtonDelete();
-
-  countTasks = listTasks.childElementCount;
-  showCountTasks(countTasks);
-}
-
 buttonTheme.addEventListener("click", changeTheme);
 inputTask.addEventListener("keypress", addNewTask);
+
+getDataStorage();
 
 function changeTheme() {
   const iconDark = document.querySelector(".theme-dark");
@@ -34,13 +22,14 @@ function changeTheme() {
 }
 
 function addNewTask({ key }) {
-  if (key === "Enter" && inputTask.value.trim() !== "") {
+  if(key === "Enter" && inputTask.value.trim() !== "") {
+
     const listTasks = document.querySelector(".list-tasks");
     const newTask = document.createElement("li");
 
     newTask.innerHTML = `
     <label class="task-container">
-      <input type="checkbox">
+      <input type="checkbox" class="task-checkbox">
       <span class="checkmark">
         <img src="./images/icon-check.svg" alt="icon check" class="icon-check">
       </span>
@@ -56,9 +45,8 @@ function addNewTask({ key }) {
     showCountTasks(countTasks);
    
     inputTask.value = "";
-
     addEventButtonDelete();
-
+    addEventTaskCheckbox();
     saveTasksStorage();
   }
 }
@@ -70,7 +58,7 @@ function removeTask() {
 
   saveTasksStorage();
 
-  if (countTasks > 0) {
+  if(countTasks > 0) {
     numberTasks.innerHTML = `${countTasks} tarefa(s) adicionada(s).`;
   } else {
     numberTasks.classList.remove("show-number-tasks");
@@ -87,6 +75,39 @@ function addEventButtonDelete() {
     button.addEventListener("click", removeTask)
   );
 }
+
+function addEventTaskCheckbox(){
+  const taskCheckbox = document.querySelectorAll('.task-checkbox');
+
+  taskCheckbox.forEach((checkbox) =>
+  checkbox.addEventListener("change", toggleCheckbox)
+  );
+}
+function toggleCheckbox() {
+  const checked = this.checked;
+
+  if(checked) {
+    this.setAttribute("checked", checked);
+  } else {
+    this.removeAttribute("checked");
+  }
+  
+  saveTasksStorage()
+}
+
+function getDataStorage() {
+  html.dataset.theme = localStorage.theme ? localStorage.theme : "dark";
+
+if(localStorage.listTasks) {
+  listTasks.innerHTML = localStorage.listTasks;
+  addEventButtonDelete();
+  addEventTaskCheckbox();
+
+  countTasks = listTasks.childElementCount;
+  showCountTasks(countTasks);
+}
+}
+
 function saveTasksStorage() {
   const listTasksStorage = listTasks.innerHTML;
   
