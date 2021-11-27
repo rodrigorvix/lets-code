@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black-500: #343434;
+  --black-700:#222222;
+  --black-900:#121212;
+  --gray-100: #808080;
+  --gray-500:#574b4b;
+  --white:#fff;
+  --yellow: #e9b759;
+  --blue:#1e1ea7;
+  --green:#0b880b;
+  
+  
+}
+
+html, body { 
+  height: 100%; 
+}
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background: var(--black-500);
+}
+button {
+  background: transparent;
+  color:var(--white);
+  border: none;
+  cursor:pointer;
+}
+
+li {
+  list-style: none;
+}

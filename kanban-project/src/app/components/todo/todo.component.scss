@@ -1,0 +1,25 @@
+.todo {
+  background:var(--black-700);
+
+  padding:0.5rem;
+  width: 300px;
+  border-radius: 8px 8px 8px;
+
+  height: 80vh;
+
+  h2 {
+    color:var(--white);
+    text-align: center;
+    background:var(--blue);
+    padding: 0.5rem;
+    border-radius: 8px 8px 8px;
+  }
+
+  ul {
+    margin-top: 1rem;
+
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

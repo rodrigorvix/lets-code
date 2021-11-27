@@ -1,0 +1,43 @@
+.card-container {
+  
+  color:var(--white);
+  background: linear-gradient(var(--black-500), var(--black-700));
+  padding:1rem 0;
+  box-shadow: 5px 5px 5px var(--black-900);
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    display:flex;
+    gap: 1rem;
+
+    span {
+      margin-left: auto;
+    }
+
+    .mat-card-actions{
+     margin-left: auto;
+     padding: 0; 
+    }
+  }
+
+  .card-content {
+    padding:1rem;
+
+    border-top: 1px solid var(--gray-100);
+   
+  }
+
+  .card-buttons {
+    display:flex;
+    justify-content: space-between;
+  }
+
+  .card-title,
+  .card-buttons {
+    padding: 0 1rem;
+  }
+
+}
+
