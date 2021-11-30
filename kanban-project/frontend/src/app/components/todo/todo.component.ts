@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
 import { CardService } from 'src/app/services/card.service';
 
+
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -11,20 +12,19 @@ import { CardService } from 'src/app/services/card.service';
 })
 export class TodoComponent implements OnInit {
 
-  cardsListTodo!: Array<Card>;
+  @Input() testeKanban!:()=>void;
 
-  
-  constructor(private cardService:CardService) {}
+  @Input() cardsList!:Array<Card>;
+
+  cardsListTodo!: Array<Card>;
+ 
+  constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
-
-    this.cardService.getCards().subscribe((data) => {
-      this.cardsListTodo = data.filter(card => card.lista ==="todo");
-       })  
+    this.cardService.cardsListsChanged.subscribe((data) => {
+      console.log(data)
+    })
+  }
   
-  }
-
-  teste() {
-    console.log("Testando execução2"); 
-  }
+ 
 }

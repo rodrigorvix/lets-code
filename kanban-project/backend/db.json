@@ -33,9 +33,17 @@
     {
       "id":6,
       "titulo":"Tarefa 6",
-      "conteudo":"Conteúdo da tarefa 5",
+      "conteudo":"Conteúdo da tarefa 6",
+      "lista":"todo"
+    },
+    {
+      "id":7,
+      "titulo":"Tarefa 7",
+      "conteudo":"Conteúdo da tarefa 7",
       "lista":"todo"
     }
+    
+    
 
  
   ]
