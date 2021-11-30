@@ -8,11 +8,11 @@ import { Card } from '../models/card.model';
 })
 export class CardService {
 
-  baseUrl = "http://localhost:3001/kanban"
+  private readonly API = "http://localhost:3001/kanban"
 
   constructor(private http: HttpClient) { }
 
   getCards(): Observable<Card []> {
-    return this.http.get<Card []>(this.baseUrl)
+    return this.http.get<Card []>(this.API)
   }
 }

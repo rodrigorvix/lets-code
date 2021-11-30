@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from 'src/app/models/card.model';
-import { CardService } from 'src/app/services/card.service';
+
 
 @Component({
   selector: 'app-kanban-list',
@@ -9,14 +8,10 @@ import { CardService } from 'src/app/services/card.service';
 })
 export class KanbanListComponent implements OnInit {
 
-  cardsList!: Array<Card>;
-
-  constructor(private cardService:CardService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.cardService.getCards().subscribe((data) => {
-    this.cardsList = data;
-     })
+    
   }
 
 }
