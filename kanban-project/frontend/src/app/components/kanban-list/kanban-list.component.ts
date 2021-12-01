@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Component, OnInit} from '@angular/core';
 import { Card } from 'src/app/models/card.model';
 import { CardService } from 'src/app/services/card.service';
 
@@ -10,24 +9,28 @@ import { CardService } from 'src/app/services/card.service';
   styleUrls: ['./kanban-list.component.scss']
 })
 export class KanbanListComponent implements OnInit {
-   cardsList!:Array<Card>
-
+  
+   cardsListTodo!:Array<Card>;
+   cardsListDoing!:Array<Card>;
+   cardsListDone!:Array<Card>;
+   
   constructor(private cardService: CardService) { }
 
   ngOnInit(): void {
+    
+    this.listAllCards();
+   
+      this.cardService.cardChange.subscribe(() => {
+        this.listAllCards();   
+    })  
+  }
+  listAllCards() {
     this.cardService.getCards().subscribe((data) => {
-      this.cardsList = data; 
-    })
+      this.cardsListTodo = data.filter(card => card.lista === "todo");
+      this.cardsListDoing = data.filter(card => card.lista === "doing");
+      this.cardsListDone = data.filter(card => card.lista === "done");
+  })
   }
 
-  testeKanban() {
-    console.log("Entrei no Kanban List");
-
-    this.cardService.cardsListsChanged.next(this.cardsList);
-
-    this.cardService.getCards().subscribe((data) => {
-      this.cardsList = data;
-    })
-  }
 
 }

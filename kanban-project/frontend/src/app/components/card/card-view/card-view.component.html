@@ -1,25 +1,61 @@
-<mat-card class="card-container">
+<mat-card class="card-view-container" *ngIf="!showEdit">
   <mat-card-title class="card-title">
-    <span>Nome da tarefa</span>  
+    <span>{{card.titulo}}</span>  
     <mat-card-actions>
-      <button mat-button (click)="testeKanban()">
+      <button mat-button (click)="handleShowEdit()">
         <mat-icon>edit</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card-title>
   <mat-card-content class="card-content">
-    Descrição da tarefa
+    {{card.conteudo}}
   </mat-card-content>
   <mat-card-actions class="card-buttons">
-    <button mat-button>
+    <button mat-button (click)="changeListToLeft()">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <button mat-button>
+    <button mat-button (click)="removeCard()">
       <mat-icon>delete_outline</mat-icon>
     </button>
-    <button mat-button>
+    <button mat-button (click)="changeListToRight()">
       <mat-icon>arrow_forward</mat-icon>
     </button>
     
   </mat-card-actions>
 </mat-card>
+
+
+<mat-card class="card-edit-container" *ngIf="showEdit">
+  <form >
+    <mat-card-title class="card-title">
+      <input type="text"
+        name="titulo"
+        [(ngModel)]="card.titulo"
+        >
+    </mat-card-title>
+    <mat-card-content class="card-content">
+     <textarea 
+      [(ngModel)] ="card.conteudo" 
+      name="conteudo"
+      cols="30"
+      rows="5"
+      >
+     
+    </textarea>
+    </mat-card-content>
+  </form>
+
+<mat-card-actions class="card-buttons">
+  <button mat-button (click)="handleShowEdit()">
+    <mat-icon>block</mat-icon>
+  </button>
+  <button mat-button  (click)="saveEditCard()">
+    <mat-icon>save</mat-icon>
+  </button>
+  
+</mat-card-actions>
+</mat-card>
+
+
+
+

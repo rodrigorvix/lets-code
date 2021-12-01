@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from 'src/app/models/card.model';
+import { CardService } from 'src/app/services/card.service';
 
 @Component({
   selector: 'app-card-create',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-create.component.scss']
 })
 export class CardCreateComponent implements OnInit {
-
-  constructor() { }
+  card: Card = {
+    titulo:'',
+    conteudo:'',
+    lista:"todo",
+  }
+  constructor(private cardService: CardService) { }
 
   ngOnInit(): void {
+
   }
 
+  createNewCard() {
+    this.cardService.createCard(this.card).subscribe();
+    
+    this.cardService.cardChange.next(this.card)
+    
+    this.card.titulo = '';
+      this.card.conteudo = '';
+      
+  }
+
+  
 }

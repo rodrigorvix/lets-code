@@ -1,15 +1,9 @@
 <section class="doing">
   <h2>Doing</h2>
   <ul>
-    <li>
-      <app-card-view></app-card-view>
-    </li>
-    <li>
-      <app-card-view></app-card-view>
-    </li>
-
+   
     <li *ngFor="let card of cardsListDoing">
-      {{card.titulo}}
+      <app-card-view [card]="card"></app-card-view>
     </li>
   </ul>
   

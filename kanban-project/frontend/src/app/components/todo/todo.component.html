@@ -1,16 +1,9 @@
 <section class="todo" >
   <h2>To do</h2>
   <ul>
-    <li >
-      <app-card-view [testeKanban]="testeKanban"></app-card-view>
-    </li>
-    <li>
-      <app-card-view></app-card-view>
-    </li>
-
     <li *ngFor="let card of cardsListTodo">
-      {{ card.titulo}}
-    </li>
+        <app-card-view [card]="card" ></app-card-view>
+      </li>
   </ul>
   
 </section>

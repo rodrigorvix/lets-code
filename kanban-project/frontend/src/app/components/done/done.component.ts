@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
 import { CardService } from 'src/app/services/card.service';
 
@@ -9,16 +9,14 @@ import { CardService } from 'src/app/services/card.service';
 })
 export class DoneComponent implements OnInit {
 
-  cardsListDone!:Array<Card>;
+  // cardsListDone!:Array<Card>;
+  @Input() cardsListDone!:Array<Card>;
 
 
   constructor(private cardService:CardService) { }
 
   ngOnInit(): void {
-
-    this.cardService.getCards().subscribe((data) => {
-      this.cardsListDone = data.filter(card => card.lista ==="done");
-       })
+    
   }
 
 }
