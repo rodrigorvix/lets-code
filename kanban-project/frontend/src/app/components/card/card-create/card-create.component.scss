@@ -5,19 +5,25 @@
   padding:1rem 0;
   box-shadow: 5px 5px 5px var(--black-900);
   
-
-  .mat-form-field {
-    width:100%;
-  }
   .card-title {
-    font-size: 1.25rem; 
+    
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1.25rem;
+    }
   }
 
   .card-content {
- 
+    padding:1rem;
     border-top: 1px solid var(--gray-100);
+    
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
   }
-
   .card-buttons {
     display:flex;
     justify-content: center;

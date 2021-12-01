@@ -57,6 +57,11 @@ export class CardViewComponent implements OnInit {
 
   handleShowEdit() {
     this.showEdit = !this.showEdit;
+    
+  }
+  cancelEdit() {
+    this.showEdit = !this.showEdit;
+    this.cardService.cardChange.next(this.card);
   }
 
   saveEditCard() {

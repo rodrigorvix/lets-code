@@ -1,0 +1,25 @@
+
+
+<main class="login">
+  <h1>Kanban Project</h1>
+
+  <div class="form">
+    <form>
+      <div class="input-container">
+        <label for="login">Nome de usuário:</label>
+        <input type="text" name="login" id="login" [(ngModel)]="credentials.login">
+      </div>
+      <div class="input-container">
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" id="senha" [(ngModel)]="credentials.senha">
+      </div>
+
+      <div class="button">
+        <button (click)="login()">
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+
+</main>

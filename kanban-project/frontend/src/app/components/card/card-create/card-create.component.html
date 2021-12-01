@@ -1,37 +1,24 @@
 <mat-card class="card-container">
-  <mat-card-title class="card-title">
-    <!-- <input 
-      type="text" 
-      name="newCardTitle" 
-      id="newCardTitle"
-      placeholder="Informe um título para o card"
-    >   -->
-    
-    <form>
-      <mat-form-field>
-        <input matInput 
-        placeholder="Informe um título"
-        [(ngModel)]="card.titulo"
-        name="titulo"
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <textarea matInput
-        cdkTextareaAutosize
-        #autosize="cdkTextareaAutosize"
-        cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5"
-        placeholder="Informe uma descrição"
-        [(ngModel)]="card.conteudo"
+  
+    <form >
+      <mat-card-title class="card-title">
+        <input type="text"
+          name="titulo"
+          [(ngModel)]="card.titulo"
+          placeholder="Informe um título"
+          >
+      </mat-card-title>
+      <mat-card-content class="card-content">
+       <textarea 
+        [(ngModel)] ="card.conteudo" 
         name="conteudo"
-       
-        ></textarea>
-      </mat-form-field>
+        cols="30"
+        rows="5"
+        placeholder="Informe uma descrição"
+        >
+      </textarea>
+      </mat-card-content>
     </form>
-  </mat-card-title>
-  <mat-card-content class="card-content">
-    
-  </mat-card-content>
   <mat-card-actions class="card-buttons">
     <button mat-button (click)="createNewCard()">
       Adicionar

@@ -16,10 +16,16 @@ export class CardCreateComponent implements OnInit {
   constructor(private cardService: CardService) { }
 
   ngOnInit(): void {
-
+    
   }
 
   createNewCard() {
+
+    if(this.card.titulo.trim() === "" || this.card.conteudo.trim() === "") {
+      alert("Preencha todos os campos do card!")
+      return;
+    }
+
     this.cardService.createCard(this.card).subscribe();
     
     this.cardService.cardChange.next(this.card)
