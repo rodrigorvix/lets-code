@@ -5,18 +5,20 @@ import { CardService } from 'src/app/services/card.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(private router: Router, private cardService: CardService) {}
 
-  constructor(private router:Router, private cardService: CardService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logout(): void {
-    this.router.navigateByUrl('/');
-    this.cardService.clearAuthKanban();
+    if (confirm('Tem certeza que deseja sair do Kanban ?')) {
+      this.cardService.isLogged.subscribe((response) => {
+        console.log(response);
+      });
+      this.router.navigateByUrl('/');
+      this.cardService.clearAuthKanban();
+    }
   }
-
 }

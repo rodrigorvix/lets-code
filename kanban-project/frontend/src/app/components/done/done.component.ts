@@ -5,18 +5,12 @@ import { CardService } from 'src/app/services/card.service';
 @Component({
   selector: 'app-done',
   templateUrl: './done.component.html',
-  styleUrls: ['./done.component.scss']
+  styleUrls: ['./done.component.scss'],
 })
 export class DoneComponent implements OnInit {
+  @Input() cardsListDone!: Array<Card>;
 
-  // cardsListDone!:Array<Card>;
-  @Input() cardsListDone!:Array<Card>;
+  constructor(private cardService: CardService) {}
 
-
-  constructor(private cardService:CardService) { }
-
-  ngOnInit(): void {
-    
-  }
-
+  ngOnInit(): void {}
 }

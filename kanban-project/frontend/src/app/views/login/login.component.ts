@@ -6,36 +6,36 @@ import { CardService } from 'src/app/services/card.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
-  credentials:Login = {
-    login:'',
-    senha:''
+  credentials: Login = {
+    login: '',
+    senha: '',
   };
-  errorLogin:boolean = false;
-  
 
-  constructor(private router:Router,private cardService: CardService) { }
+  constructor(private router: Router, private cardService: CardService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  login() {
+    if (
+      this.credentials.login.trim() === '' ||
+      this.credentials.senha.trim() === ''
+    ) {
+      alert('Preencha todos os campos para efetuar o login!');
+      return;
+    }
+
+    this.cardService.authKanban(this.credentials).subscribe((token) => {
+      if (token) {
+        this.cardService.setAuthKanban(token);
+        this.cardService.isLogged.next(true);
+        this.router.navigate(['/home']);
+      } else {
+        alert('Usuário ou senha incorretos!');
+        this.cardService.clearAuthKanban();
+      }
+    });
   }
-
-  login(){
-   
-    this.cardService.authKanban(this.credentials)
-      .subscribe((token) => {
-        console.log(token)
-        if (token) {
-          this.cardService.setAuthKanban(token);
-          this.router.navigate(['/home']);
-          this.errorLogin = false;
-        } else {
-          this.errorLogin = true;
-          this.cardService.clearAuthKanban();
-        }
-      });
-  }
-
 }

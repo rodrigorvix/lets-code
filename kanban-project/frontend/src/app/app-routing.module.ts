@@ -7,11 +7,17 @@ import { LoginComponent } from './views/login/login.component';
 const routes: Routes = [
   { 
     path:"", 
-    component:LoginComponent 
+    component:LoginComponent,
+    pathMatch: 'full' 
   },
   { 
     path:"home", 
-    component:HomeComponent 
+    canActivate: [],
+    component:HomeComponent,
+  }, 
+  {
+    path: '**', 
+    redirectTo: ""
   }
 ];
 

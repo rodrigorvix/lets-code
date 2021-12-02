@@ -1,3 +1,4 @@
 
-<app-header></app-header>
-<app-kanban-list></app-kanban-list>
+<app-header *ngIf="isLogged"></app-header>
+<app-kanban-list *ngIf="isLogged"></app-kanban-list>
+<app-not-found *ngIf="!isLogged"></app-not-found>

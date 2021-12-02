@@ -24,6 +24,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './views/login/login.component';
 import { HomeComponent } from './views/home/home.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { HomeComponent } from './views/home/home.component';
     NewCardComponent,
     LoginComponent,
     HomeComponent,
+    NotFoundComponent,
+  
     
   ],
   imports: [
